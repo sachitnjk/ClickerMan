@@ -2,32 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SwitchTrigger : MonoBehaviour
 {
 	private PlayerInputControls playerInputControls;
 	private TextMeshProUGUI scoreTextBox;
+	private Slider overheatSliderElement;
 
 	[Header("Clicker Attributes")]
 	[SerializeField] private float clickDelay;
 	[SerializeField] private float maxClickCounterAmount;
 	[SerializeField] private float clickIncreaseAmount;
 
+	[Header("Overheat Attributes")]
+	[SerializeField] private float maxOverheatAmount;
+
 	private float currentDelay = 0f;
-	private float currentClickCounter;
+	private float currentClickCounterAmount;
 	private bool isClicked = false;
 
 	private void Start()
 	{
 		playerInputControls = GetComponent<PlayerInputControls>();
 		scoreTextBox = Storage.StorageInstance.GetScoreTextBox();
+		overheatSliderElement = Storage.StorageInstance.GetOverheatSlider();
 
-		currentClickCounter = 0;
+		overheatSliderElement.maxValue = maxOverheatAmount;
+		overheatSliderElement.value = currentClickCounterAmount;
+
+		currentClickCounterAmount = 0;
 	}
 	private void Update()
 	{
 		InteractCheck();
-		Debug.Log(currentClickCounter);
+		Debug.Log(currentClickCounterAmount);
 	}
 
 	void InteractCheck()
@@ -56,19 +65,22 @@ public class SwitchTrigger : MonoBehaviour
 
 	void ClickCounterIncrease()
 	{
-		currentClickCounter += clickIncreaseAmount;
-		currentClickCounter = Mathf.Clamp(currentClickCounter, 0, maxClickCounterAmount);
+		currentClickCounterAmount += clickIncreaseAmount;
+		if(overheatSliderElement.value < maxOverheatAmount)
+		{
+			currentClickCounterAmount = Mathf.Clamp(currentClickCounterAmount, 0, maxClickCounterAmount);
+		}
+		else if (overheatSliderElement.value >= maxOverheatAmount)
+		{
+			currentClickCounterAmount = Mathf.Clamp(currentClickCounterAmount, 0, maxOverheatAmount);
+		}
 
-		scoreTextBox.text = currentClickCounter.ToString();
+		scoreTextBox.text = currentClickCounterAmount.ToString();
+		overheatSliderElement.value = currentClickCounterAmount;
 
-		if(currentClickCounter >= maxClickCounterAmount )
+		if(currentClickCounterAmount >= maxClickCounterAmount )
 		{
 			Debug.Log("Max click score reached");
 		}
-	}
-
-	public bool GetClickStatus()
-	{
-		return isClicked;
 	}
 }

@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreTextBox: {fileID: 1640837573}
+  overheatSlider: {fileID: 2103791190}
 --- !u!1 &632023357
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,6 +258,10 @@ PrefabInstance:
     - target: {fileID: 4922959588663870921, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
       propertyPath: clickDelay
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922959588663870921, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
+      propertyPath: maxOverheatAmount
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4922959588663870921, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
       propertyPath: clickIncreaseAmount
@@ -489,7 +494,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1190614728}
   - component: {fileID: 1190614727}
-  - component: {fileID: 1190614726}
+  - component: {fileID: 1190614729}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -497,25 +502,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1190614726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190614725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &1190614727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,6 +532,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1190614729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190614725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
 --- !u!114 &1640837573 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4043303069107460074, guid: 0d0444089706e494f9ee7f08a637b425, type: 3}
@@ -662,6 +676,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1217012013164981096, guid: 0d0444089706e494f9ee7f08a637b425, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1217012013164981096, guid: 0d0444089706e494f9ee7f08a637b425, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1217012013164981096, guid: 0d0444089706e494f9ee7f08a637b425, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4043303070504354650, guid: 0d0444089706e494f9ee7f08a637b425, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -710,5 +736,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5353378301650046912, guid: 0d0444089706e494f9ee7f08a637b425, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5353378301650046912, guid: 0d0444089706e494f9ee7f08a637b425, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d0444089706e494f9ee7f08a637b425, type: 3}
+--- !u!114 &2103791190 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 193079899900413438, guid: 0d0444089706e494f9ee7f08a637b425, type: 3}
+  m_PrefabInstance: {fileID: 2103791189}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
