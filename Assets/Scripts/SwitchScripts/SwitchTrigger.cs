@@ -6,6 +6,10 @@ public class SwitchTrigger : MonoBehaviour
 {
 	private PlayerInputControls playerInputControls;
 
+	[SerializeField] private float clickDelay;
+
+	private float currentDelay = 0f;
+
 	private void Start()
 	{
 		playerInputControls = GetComponent<PlayerInputControls>();
@@ -17,13 +21,19 @@ public class SwitchTrigger : MonoBehaviour
 
 	void InteractCheck()
 	{
-		if(playerInputControls.leftClick.WasPressedThisFrame())
+		if(currentDelay > 0f) 
+		{
+			currentDelay -= Time.deltaTime;
+		}
+
+		if(currentDelay <= 0f && playerInputControls.leftClick.WasPressedThisFrame())
 		{
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
 			if(Physics.Raycast(ray, out RaycastHit hitInfo) && hitInfo.collider == GetComponent<Collider>()) 
 			{
 				Debug.Log("Click is detected");
+				currentDelay = clickDelay;
 			}
 		}
 	}
