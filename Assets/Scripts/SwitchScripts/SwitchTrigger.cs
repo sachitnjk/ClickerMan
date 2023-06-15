@@ -1,23 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SwitchTrigger : MonoBehaviour
 {
 	private PlayerInputControls playerInputControls;
+	private TextMeshProUGUI scoreTextBox;
 
+	[Header("Clicker Attributes")]
 	[SerializeField] private float clickDelay;
+	[SerializeField] private float maxClickCounterAmount;
+	[SerializeField] private float clickIncreaseAmount;
 
 	private float currentDelay = 0f;
+	private float currentClickCounter;
 	private bool isClicked = false;
 
 	private void Start()
 	{
 		playerInputControls = GetComponent<PlayerInputControls>();
+		scoreTextBox = Storage.StorageInstance.GetScoreTextBox();
+
+		currentClickCounter = 0;
 	}
 	private void Update()
 	{
 		InteractCheck();
+		Debug.Log(currentClickCounter);
 	}
 
 	void InteractCheck()
@@ -35,11 +45,25 @@ public class SwitchTrigger : MonoBehaviour
 			{
 				currentDelay = clickDelay;
 				isClicked = true;
+				ClickCounterIncrease();
 			}
 		}
 		else
 		{
 			isClicked = false;
+		}
+	}
+
+	void ClickCounterIncrease()
+	{
+		currentClickCounter += clickIncreaseAmount;
+		currentClickCounter = Mathf.Clamp(currentClickCounter, 0, maxClickCounterAmount);
+
+		scoreTextBox.text = currentClickCounter.ToString();
+
+		if(currentClickCounter >= maxClickCounterAmount )
+		{
+			Debug.Log("Max click score reached");
 		}
 	}
 
