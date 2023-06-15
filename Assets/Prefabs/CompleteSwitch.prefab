@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4456996822979995991}
+  - component: {fileID: 8001553027182087848}
   - component: {fileID: 3208822832799047879}
   - component: {fileID: 3227338631043079847}
-  - component: {fileID: 8001553027182087848}
   - component: {fileID: 4922959588663870921}
   m_Layer: 0
   m_Name: CompleteSwitch
@@ -36,6 +36,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8001553027182087848
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4456996822979995976}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: -0.45}
 --- !u!114 &3208822832799047879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,19 +101,6 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
---- !u!65 &8001553027182087848
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4456996822979995976}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.5, z: -0.45}
 --- !u!114 &4922959588663870921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04c16a16259a4e349a344c4176207126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInputControls: {fileID: 0}
+  clickDelay: 2
 --- !u!1 &4456996823380372932
 GameObject:
   m_ObjectHideFlags: 0
