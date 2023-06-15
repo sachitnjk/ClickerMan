@@ -9,6 +9,7 @@ public class SwitchTrigger : MonoBehaviour
 	[SerializeField] private float clickDelay;
 
 	private float currentDelay = 0f;
+	private bool isClicked = false;
 
 	private void Start()
 	{
@@ -30,11 +31,20 @@ public class SwitchTrigger : MonoBehaviour
 		{
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-			if(Physics.Raycast(ray, out RaycastHit hitInfo) && hitInfo.collider == GetComponent<Collider>()) 
+			if(Physics.Raycast(ray, out RaycastHit hitInfo) && hitInfo.collider == GetComponent<Collider>())
 			{
-				Debug.Log("Click is detected");
 				currentDelay = clickDelay;
+				isClicked = true;
 			}
 		}
+		else
+		{
+			isClicked = false;
+		}
+	}
+
+	public bool GetClickStatus()
+	{
+		return isClicked;
 	}
 }
