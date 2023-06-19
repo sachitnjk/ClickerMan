@@ -261,7 +261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4922959588663870921, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
       propertyPath: maxOverheatAmount
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4922959588663870921, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
       propertyPath: clickIncreaseAmount
@@ -270,6 +270,18 @@ PrefabInstance:
     - target: {fileID: 4922959588663870921, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
       propertyPath: maxClickCounterAmount
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922959588663870921, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
+      propertyPath: overheatIncreaseAmount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922959588663870921, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
+      propertyPath: overheatDecrementTimeDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922959588663870921, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
+      propertyPath: overheatDecreaseOverTimeAmount
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}

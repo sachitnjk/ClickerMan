@@ -16,11 +16,16 @@ public class SwitchTrigger : MonoBehaviour
 	[SerializeField] private float clickIncreaseAmount;
 
 	[Header("Overheat Attributes")]
+	[SerializeField] private float overheatIncreaseAmount;
 	[SerializeField] private float maxOverheatAmount;
+	[SerializeField] private float overheatDecreaseOverTimeAmount;
+	[SerializeField] private float overheatDecrementTimeDelay;
 
 	private float currentDelay = 0f;
 	private float currentClickCounterAmount;
 	private bool isClicked = false;
+	private bool overheatDecreasing  = false;
+	private bool canInteract  = true;
 
 	private void Start()
 	{
@@ -29,7 +34,7 @@ public class SwitchTrigger : MonoBehaviour
 		overheatSliderElement = Storage.StorageInstance.GetOverheatSlider();
 
 		overheatSliderElement.maxValue = maxOverheatAmount;
-		overheatSliderElement.value = currentClickCounterAmount;
+		overheatSliderElement.value = Mathf.Clamp(overheatSliderElement.value, 0f, maxOverheatAmount);
 
 		currentClickCounterAmount = 0;
 	}
@@ -37,6 +42,7 @@ public class SwitchTrigger : MonoBehaviour
 	{
 		InteractCheck();
 		Debug.Log(currentClickCounterAmount);
+		Debug.Log(overheatDecreasing);
 	}
 
 	void InteractCheck()
@@ -46,7 +52,7 @@ public class SwitchTrigger : MonoBehaviour
 			currentDelay -= Time.deltaTime;
 		}
 
-		if(currentDelay <= 0f && playerInputControls.leftClick.WasPressedThisFrame())
+		if(currentDelay <= 0f && playerInputControls.leftClick.WasPressedThisFrame() && canInteract)
 		{
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -66,21 +72,46 @@ public class SwitchTrigger : MonoBehaviour
 	void ClickCounterIncrease()
 	{
 		currentClickCounterAmount += clickIncreaseAmount;
-		if(overheatSliderElement.value < maxOverheatAmount)
-		{
-			currentClickCounterAmount = Mathf.Clamp(currentClickCounterAmount, 0, maxClickCounterAmount);
-		}
-		else if (overheatSliderElement.value >= maxOverheatAmount)
-		{
-			currentClickCounterAmount = Mathf.Clamp(currentClickCounterAmount, 0, maxOverheatAmount);
-		}
 
 		scoreTextBox.text = currentClickCounterAmount.ToString();
-		overheatSliderElement.value = currentClickCounterAmount;
+		
+		OverheatCounterHandling();
 
 		if(currentClickCounterAmount >= maxClickCounterAmount )
 		{
 			Debug.Log("Max click score reached");
 		}
+
+	}
+
+	void OverheatCounterHandling()
+	{
+		if(overheatSliderElement.value < maxOverheatAmount && !overheatDecreasing && canInteract)
+		{
+			overheatSliderElement.value += overheatIncreaseAmount;
+
+			if(overheatSliderElement.value >= maxOverheatAmount)
+			{
+				StartCoroutine(DecrementOverheatSliderValue());
+			}
+		}
+	}
+
+	IEnumerator DecrementOverheatSliderValue()
+	{
+		canInteract = false;
+		overheatDecreasing = true;
+
+		yield return new WaitForSeconds(overheatDecrementTimeDelay);
+
+		while (overheatSliderElement.value > 0f)
+		{
+			overheatSliderElement.value -= overheatDecreaseOverTimeAmount * Time.deltaTime;
+
+			yield return null;
+		}
+
+		overheatDecreasing = false;
+		canInteract= true;
 	}
 }
