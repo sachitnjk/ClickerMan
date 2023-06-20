@@ -217,7 +217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4456996822979995991, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.15640116
+      value: -1.48
       objectReference: {fileID: 0}
     - target: {fileID: 4456996822979995991, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
       propertyPath: m_LocalPosition.y
@@ -257,15 +257,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4922959588663870921, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
       propertyPath: clickDelay
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4922959588663870921, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
       propertyPath: maxOverheatAmount
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4922959588663870921, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
       propertyPath: clickIncreaseAmount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4922959588663870921, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
       propertyPath: maxClickCounterAmount
@@ -273,7 +273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4922959588663870921, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
       propertyPath: overheatIncreaseAmount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4922959588663870921, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
       propertyPath: overheatDecrementTimeDelay
