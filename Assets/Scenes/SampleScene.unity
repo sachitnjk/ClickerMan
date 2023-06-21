@@ -202,6 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreTextBox: {fileID: 1640837573}
   overheatSlider: {fileID: 2103791190}
+  coolingSlider: {fileID: 994621296}
 --- !u!1 &632023357
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +241,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 241252174}
     m_Modifications:
+    - target: {fileID: 4343333252090767071, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
+      propertyPath: maxOverheatAmount
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4343333252090767071, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
+      propertyPath: clickIncreaseAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4343333252090767071, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
+      propertyPath: maxClickCounterAmount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4343333252090767071, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
+      propertyPath: overheatIncreaseAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4343333252090767071, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
+      propertyPath: overheatDecrementTimeDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4343333252090767071, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
+      propertyPath: overheatDecreaseOverTimeAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4456996822979995976, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
       propertyPath: m_Name
       value: CompleteSwitch
@@ -316,7 +341,13 @@ PrefabInstance:
       propertyPath: overheatDecreaseOverTimeAmount
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6982059117578982805, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
+      propertyPath: clickIncreaseAmount
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4343333252090767071, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
+    - {fileID: 4922959588663870921, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
 --- !u!4 &677551885 stripped
 Transform:
@@ -534,6 +565,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 64.844, y: 0, z: 0}
+--- !u!114 &994621296 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7781008400228764829, guid: 0d0444089706e494f9ee7f08a637b425, type: 3}
+  m_PrefabInstance: {fileID: 2103791189}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1190614725
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,6 +869,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 241252174}
     m_Modifications:
+    - target: {fileID: 959175134857920508, guid: 776b60d7e609ee84a80123f924774b04, type: 3}
+      propertyPath: maxCoolerAmount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 959175134857920508, guid: 776b60d7e609ee84a80123f924774b04, type: 3}
+      propertyPath: clickIncreaseAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 959175134857920508, guid: 776b60d7e609ee84a80123f924774b04, type: 3}
+      propertyPath: coolerIncreaseAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 959175134857920508, guid: 776b60d7e609ee84a80123f924774b04, type: 3}
+      propertyPath: maxClickCounterAmount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 959175134857920508, guid: 776b60d7e609ee84a80123f924774b04, type: 3}
+      propertyPath: coolerDecrementTimeDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3749369492160541516, guid: 776b60d7e609ee84a80123f924774b04, type: 3}
+      propertyPath: clickIncreaseAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3984040092466201386, guid: 776b60d7e609ee84a80123f924774b04, type: 3}
       propertyPath: m_Name
       value: CompleteSwitch2
@@ -875,5 +941,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 959175134857920508, guid: 776b60d7e609ee84a80123f924774b04, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 776b60d7e609ee84a80123f924774b04, type: 3}

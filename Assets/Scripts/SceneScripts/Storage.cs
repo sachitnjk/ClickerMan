@@ -10,6 +10,7 @@ public class Storage : MonoBehaviour
 
 	[SerializeField] private TextMeshProUGUI scoreTextBox;
 	[SerializeField] private Slider overheatSlider;
+	[SerializeField] private Slider coolingSlider;
 	private void Awake()
 	{
 		if (StorageInstance == null)
@@ -25,6 +26,10 @@ public class Storage : MonoBehaviour
 	public Slider GetOverheatSlider()
 	{
 		return overheatSlider;
+	}
+	public Slider GetCoolingSlider() 
+	{
+		return coolingSlider;
 	}
 
 	public TextMeshProUGUI GetScoreTextBox()
