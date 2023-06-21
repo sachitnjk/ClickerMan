@@ -62,6 +62,8 @@ public class SwitchCommonBehaviour : MonoBehaviour
 	{
 		float.TryParse(scoreTextBox.text, out existingCounterAmount);
 		currentClickCounterAmount = existingCounterAmount + clickIncreaseAmount;
+		
+		currentClickCounterAmount = Mathf.Clamp(currentClickCounterAmount, 0f, maxClickCounterAmount);
 
 		scoreTextBox.text = currentClickCounterAmount.ToString();
 

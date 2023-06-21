@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2745030806731672229}
   - component: {fileID: 2763388035049419973}
   - component: {fileID: 7321572825687090378}
-  - component: {fileID: 3749369492160541516}
+  - component: {fileID: 1394985617708800947}
   m_Layer: 0
   m_Name: CompleteSwitch2
   m_TagString: Untagged
@@ -101,7 +101,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: -0.45}
---- !u!114 &3749369492160541516
+--- !u!114 &1394985617708800947
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,12 +110,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3984040092466201386}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 466dfe57eccb7d0489b81b802f080a5f, type: 3}
+  m_Script: {fileID: 11500000, guid: a87d09bd5f92b1f408e50c276853cfae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clickDelay: 0
   maxClickCounterAmount: 20
-  clickIncreaseAmount: 2
+  clickIncreaseAmount: 1
 --- !u!1 &3984040092856843731
 GameObject:
   m_ObjectHideFlags: 0
