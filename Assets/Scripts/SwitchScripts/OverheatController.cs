@@ -35,9 +35,9 @@ public class OverheatController : SwitchCommonBehaviour
 		if(overheatSlider.value != maxOverheatSliderAmount && base.GetCanInteractStatus()) 
 		{
 			overheatSlider.value += overheatSliderIncreaseAmount;
+
 			if(overheatSlider.value >= maxOverheatSliderAmount)
 			{
-				base.SetCanInteractStatus(false);
 				StartCoroutine(OverheatSliderDecreaseOverTime());
 			}
 		}
@@ -45,6 +45,7 @@ public class OverheatController : SwitchCommonBehaviour
 
 	IEnumerator OverheatSliderDecreaseOverTime() 
 	{
+		base.SetCanInteractStatus(false);
 		overheatDecreasing = true;
 
 		yield return new WaitForSeconds(overheatDecreaseTimeDelay);

@@ -345,6 +345,10 @@ PrefabInstance:
       propertyPath: clickIncreaseAmount
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7445788520035934973, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
+      propertyPath: maxClickCounterAmount
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4343333252090767071, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
     - {fileID: 4922959588663870921, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
@@ -890,11 +894,23 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1394985617708800947, guid: 776b60d7e609ee84a80123f924774b04, type: 3}
+      propertyPath: maxClickCounterAmount
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1394985617708800947, guid: 776b60d7e609ee84a80123f924774b04, type: 3}
       propertyPath: maxCoolingSliderAmount
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1394985617708800947, guid: 776b60d7e609ee84a80123f924774b04, type: 3}
+      propertyPath: coolingDecreaseTimeDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1394985617708800947, guid: 776b60d7e609ee84a80123f924774b04, type: 3}
       propertyPath: coolingSliderIncreaseAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1394985617708800947, guid: 776b60d7e609ee84a80123f924774b04, type: 3}
+      propertyPath: coolingSliderDecreaseOverTimeAmount
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3749369492160541516, guid: 776b60d7e609ee84a80123f924774b04, type: 3}

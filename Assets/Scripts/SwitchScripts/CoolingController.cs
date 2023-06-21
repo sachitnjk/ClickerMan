@@ -10,6 +10,11 @@ public class CoolingController : SwitchCommonBehaviour
 	[Header("Cooling Slider Attributes")]
 	[SerializeField] private float coolingSliderIncreaseAmount;
 	[SerializeField] private float maxCoolingSliderAmount;
+	[SerializeField] private float coolingDecreaseTimeDelay;
+	[SerializeField] private float coolingSliderDecreaseOverTimeAmount;
+
+	private bool coolingSliderDecreasing = false;
+
 	protected virtual void Start()
 	{
 		base.Start();
@@ -30,6 +35,29 @@ public class CoolingController : SwitchCommonBehaviour
 		if(coolingSlider.value != maxCoolingSliderAmount && base.GetCanInteractStatus())
 		{
 			coolingSlider.value += coolingSliderIncreaseAmount;
+
+			if(coolingSlider.value >= maxCoolingSliderAmount)
+			{
+				StartCoroutine(CoolingSliderDecreaseOvertime());
+			}
 		}
+	}
+
+	IEnumerator CoolingSliderDecreaseOvertime() 
+	{
+		base.SetCanInteractStatus(false);
+		coolingSliderDecreasing = true;
+
+		yield return new WaitForSeconds(coolingDecreaseTimeDelay);
+
+		while(coolingSlider.value > 0f)
+		{
+			coolingSlider.value -= coolingSliderDecreaseOverTimeAmount * Time.deltaTime;
+
+			yield return null;
+		}
+
+		coolingSliderDecreasing = false;
+		base.SetCanInteractStatus(true);
 	}
 }
