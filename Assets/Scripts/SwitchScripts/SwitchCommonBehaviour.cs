@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SwitchCommonBehaviour : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class SwitchCommonBehaviour : MonoBehaviour
 	private float existingCounterAmount;
 
 	private bool isClicked = false;
-	private bool canInteract = true;
+	private bool canInteract;
 
 	protected virtual void Start()
 	{
@@ -27,6 +28,8 @@ public class SwitchCommonBehaviour : MonoBehaviour
 
 		currentClickCounterAmount = Mathf.Clamp(currentClickCounterAmount, 0f, maxClickCounterAmount);
 		currentClickCounterAmount = 0;
+
+		canInteract = true;
 	}
 
 	private void Update()
@@ -69,8 +72,21 @@ public class SwitchCommonBehaviour : MonoBehaviour
 
 		if (currentClickCounterAmount >= maxClickCounterAmount)
 		{
-			Debug.Log("Max click score reached");
+			canInteract = false;
 		}
+		else if( currentClickCounterAmount < maxClickCounterAmount)
+		{
+			canInteract = true;
+		}
+	}
 
+	protected virtual bool GetCanInteractStatus()
+	{
+		return canInteract;
+	}
+
+	protected virtual void SetCanInteractStatus(bool canInteractStatus)
+	{
+		canInteract = canInteractStatus;
 	}
 }

@@ -345,14 +345,6 @@ PrefabInstance:
       propertyPath: clickIncreaseAmount
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 7445788520035934973, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
-      propertyPath: maxOverheatSliderAmount
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7445788520035934973, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
-      propertyPath: overheatSliderIncreaseAmount
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4343333252090767071, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
     - {fileID: 4922959588663870921, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}

@@ -27,7 +27,7 @@ public class CoolingController : SwitchCommonBehaviour
 
 	protected virtual void CoolingSliderIncrease()
 	{
-		if(coolingSlider.value != maxCoolingSliderAmount)
+		if(coolingSlider.value != maxCoolingSliderAmount && base.GetCanInteractStatus())
 		{
 			coolingSlider.value += coolingSliderIncreaseAmount;
 		}

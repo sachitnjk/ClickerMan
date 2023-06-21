@@ -116,6 +116,10 @@ MonoBehaviour:
   clickDelay: 0
   maxClickCounterAmount: 20
   clickIncreaseAmount: 2
+  overheatSliderIncreaseAmount: 2
+  maxOverheatSliderAmount: 10
+  overheatDecreaseTimeDelay: 2
+  overheatSliderDecreaseOverTimeAmount: 1
 --- !u!1 &4456996823380372932
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,10 @@ public class OverheatController : SwitchCommonBehaviour
 	[Header("Overheat Slider Attributes")]
 	[SerializeField] private float overheatSliderIncreaseAmount;
 	[SerializeField] private float maxOverheatSliderAmount;
+	[SerializeField] private float overheatDecreaseTimeDelay;
+	[SerializeField] private float overheatSliderDecreaseOverTimeAmount;
+
+	private bool overheatDecreasing = false;
 
 	protected virtual void Start()
 	{
@@ -28,9 +32,31 @@ public class OverheatController : SwitchCommonBehaviour
 
 	protected virtual void OverheatSliderIncrease()
 	{
-		if(overheatSlider.value != maxOverheatSliderAmount) 
+		if(overheatSlider.value != maxOverheatSliderAmount && base.GetCanInteractStatus()) 
 		{
 			overheatSlider.value += overheatSliderIncreaseAmount;
+			if(overheatSlider.value >= maxOverheatSliderAmount)
+			{
+				base.SetCanInteractStatus(false);
+				StartCoroutine(OverheatSliderDecreaseOverTime());
+			}
 		}
+	}
+
+	IEnumerator OverheatSliderDecreaseOverTime() 
+	{
+		overheatDecreasing = true;
+
+		yield return new WaitForSeconds(overheatDecreaseTimeDelay);
+
+		while(overheatSlider.value > 0f)
+		{
+			overheatSlider.value -= overheatSliderDecreaseOverTimeAmount * Time.deltaTime;
+
+			yield return null;
+		}
+
+		overheatDecreasing = false;
+		base.SetCanInteractStatus(true);
 	}
 }
