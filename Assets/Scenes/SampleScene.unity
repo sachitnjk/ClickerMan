@@ -897,6 +897,10 @@ PrefabInstance:
       propertyPath: overheatDecrease_CoolingIncreaseAmount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1394985617708800947, guid: 776b60d7e609ee84a80123f924774b04, type: 3}
+      propertyPath: overheatSliderDecrease_CoolingIncreaseAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3749369492160541516, guid: 776b60d7e609ee84a80123f924774b04, type: 3}
       propertyPath: clickIncreaseAmount
       value: 1

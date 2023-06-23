@@ -13,7 +13,7 @@ public class CoolingController : SwitchCommonBehaviour
 	[SerializeField] private float maxCoolingSliderAmount;
 	[SerializeField] private float coolingDecreaseTimeDelay;
 	[SerializeField] private float coolingSliderDecreaseOverTimeAmount;
-	[SerializeField] private float overheatDecrease_CoolingIncreaseAmount;
+	[SerializeField] private float overheatSliderDecrease_CoolingIncreaseAmount;
 
 	private bool coolingSliderDecreasing = false;
 
@@ -69,7 +69,7 @@ public class CoolingController : SwitchCommonBehaviour
 	{
 		if(overheatSlider.value > 0f)
 		{
-			overheatSlider.value -= overheatDecrease_CoolingIncreaseAmount;
+			overheatSlider.value -= overheatSliderDecrease_CoolingIncreaseAmount;
 		}
 	}
 }

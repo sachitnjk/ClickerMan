@@ -120,6 +120,7 @@ MonoBehaviour:
   maxOverheatSliderAmount: 10
   overheatDecreaseTimeDelay: 2
   overheatSliderDecreaseOverTimeAmount: 1
+  coolingSliderDecrease_OverheatIncreaseAmount: 1
 --- !u!1 &4456996823380372932
 GameObject:
   m_ObjectHideFlags: 0

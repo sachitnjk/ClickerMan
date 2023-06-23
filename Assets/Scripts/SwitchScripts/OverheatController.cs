@@ -6,12 +6,14 @@ using UnityEngine.UI;
 public class OverheatController : SwitchCommonBehaviour
 {
 	private Slider overheatSlider;
+	private Slider coolingSlider;
 
 	[Header("Overheat Slider Attributes")]
 	[SerializeField] private float overheatSliderIncreaseAmount;
 	[SerializeField] private float maxOverheatSliderAmount;
 	[SerializeField] private float overheatDecreaseTimeDelay;
 	[SerializeField] private float overheatSliderDecreaseOverTimeAmount;
+	[SerializeField] private float coolingSliderDecrease_OverheatIncreaseAmount;
 
 	private bool overheatDecreasing = false;
 
@@ -20,6 +22,7 @@ public class OverheatController : SwitchCommonBehaviour
 		base.Start();	
 
 		overheatSlider = Storage.StorageInstance.GetOverheatSlider();
+		coolingSlider = Storage.StorageInstance.GetCoolingSlider();
 		overheatSlider.maxValue = maxOverheatSliderAmount;
 		overheatSlider.value = 0f;
 	}
@@ -35,6 +38,7 @@ public class OverheatController : SwitchCommonBehaviour
 		if(overheatSlider.value != maxOverheatSliderAmount && base.GetCanInteractStatus()) 
 		{
 			overheatSlider.value += overheatSliderIncreaseAmount;
+			OverheatImpactOnCooling();
 
 			if(overheatSlider.value >= maxOverheatSliderAmount)
 			{
@@ -59,5 +63,13 @@ public class OverheatController : SwitchCommonBehaviour
 
 		overheatDecreasing = false;
 		base.SetCanInteractStatus(true);
+	}
+
+	protected virtual void OverheatImpactOnCooling()
+	{
+		if (coolingSlider.value > 0f)
+		{
+			coolingSlider.value -= coolingSliderDecrease_OverheatIncreaseAmount;
+		}
 	}
 }
