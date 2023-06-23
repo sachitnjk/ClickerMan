@@ -114,8 +114,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickDelay: 0
-  maxClickCounterAmount: 20
+  maxClickCounterAmount: 80
   clickIncreaseAmount: 1
+  coolingSliderIncreaseAmount: 1
+  maxCoolingSliderAmount: 10
+  coolingDecreaseTimeDelay: 2
+  coolingSliderDecreaseOverTimeAmount: 1
+  overheatDecrease_CoolingIncreaseAmount: 0
 --- !u!1 &3984040092856843731
 GameObject:
   m_ObjectHideFlags: 0

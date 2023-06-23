@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickDelay: 0
-  maxClickCounterAmount: 20
+  maxClickCounterAmount: 80
   clickIncreaseAmount: 2
   overheatSliderIncreaseAmount: 2
   maxOverheatSliderAmount: 10

@@ -6,12 +6,14 @@ using UnityEngine.UI;
 public class CoolingController : SwitchCommonBehaviour
 {
 	private Slider coolingSlider;
+	private Slider overheatSlider;
 
 	[Header("Cooling Slider Attributes")]
 	[SerializeField] private float coolingSliderIncreaseAmount;
 	[SerializeField] private float maxCoolingSliderAmount;
 	[SerializeField] private float coolingDecreaseTimeDelay;
 	[SerializeField] private float coolingSliderDecreaseOverTimeAmount;
+	[SerializeField] private float overheatDecrease_CoolingIncreaseAmount;
 
 	private bool coolingSliderDecreasing = false;
 
@@ -20,6 +22,7 @@ public class CoolingController : SwitchCommonBehaviour
 		base.Start();
 
 		coolingSlider = Storage.StorageInstance.GetCoolingSlider();
+		overheatSlider = Storage.StorageInstance.GetOverheatSlider();
 		coolingSlider.maxValue = maxCoolingSliderAmount;
 		coolingSlider.value = 0f;
 	}
@@ -35,6 +38,7 @@ public class CoolingController : SwitchCommonBehaviour
 		if(coolingSlider.value != maxCoolingSliderAmount && base.GetCanInteractStatus())
 		{
 			coolingSlider.value += coolingSliderIncreaseAmount;
+			CoolingImpactOnOverheat();
 
 			if(coolingSlider.value >= maxCoolingSliderAmount)
 			{
@@ -43,14 +47,14 @@ public class CoolingController : SwitchCommonBehaviour
 		}
 	}
 
-	IEnumerator CoolingSliderDecreaseOvertime() 
+	IEnumerator CoolingSliderDecreaseOvertime()
 	{
 		base.SetCanInteractStatus(false);
 		coolingSliderDecreasing = true;
 
 		yield return new WaitForSeconds(coolingDecreaseTimeDelay);
 
-		while(coolingSlider.value > 0f)
+		while (coolingSlider.value > 0f)
 		{
 			coolingSlider.value -= coolingSliderDecreaseOverTimeAmount * Time.deltaTime;
 
@@ -59,5 +63,13 @@ public class CoolingController : SwitchCommonBehaviour
 
 		coolingSliderDecreasing = false;
 		base.SetCanInteractStatus(true);
+	}
+
+	protected virtual void CoolingImpactOnOverheat()
+	{
+		if(overheatSlider.value > 0f)
+		{
+			overheatSlider.value -= overheatDecrease_CoolingIncreaseAmount;
+		}
 	}
 }
