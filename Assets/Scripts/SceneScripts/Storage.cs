@@ -8,9 +8,11 @@ public class Storage : MonoBehaviour
 {
 	public static Storage StorageInstance;
 
+	[Header("Scene UI References")]
 	[SerializeField] private TextMeshProUGUI scoreTextBox;
 	[SerializeField] private Slider overheatSlider;
 	[SerializeField] private Slider coolingSlider;
+
 	private void Awake()
 	{
 		if (StorageInstance == null)
