@@ -17,7 +17,7 @@ public class OverheatController : SwitchCommonBehaviour
 
 	private bool overheatDecreasing = false;
 
-	protected virtual void Start()
+	protected override void Start()
 	{
 		base.Start();	
 
@@ -71,5 +71,22 @@ public class OverheatController : SwitchCommonBehaviour
 		{
 			coolingSlider.value -= coolingSliderDecrease_OverheatIncreaseAmount;
 		}
+	}
+
+	public void SetOverheatSliderAmountIncrease(float increaseAmount)
+	{
+		overheatSliderIncreaseAmount = increaseAmount;
+	}
+	public void SetMaxOverheatValue(float maxValue)
+	{
+		maxOverheatSliderAmount = maxValue;
+	}
+	public void SetOverheatSliderDecreaseAmount(float decreaseAmount)
+	{
+		overheatSliderDecreaseOverTimeAmount = decreaseAmount;
+	}
+	public void SetOverheatAffectAmount(float affectAmount)
+	{
+		coolingSliderDecrease_OverheatIncreaseAmount = affectAmount;
 	}
 }

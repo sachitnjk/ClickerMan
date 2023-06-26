@@ -13,6 +13,9 @@ public class Storage : MonoBehaviour
 	[SerializeField] private Slider overheatSlider;
 	[SerializeField] private Slider coolingSlider;
 
+	[SerializeField] private CoolingController coolingController;
+	[SerializeField] private OverheatController overheatController;
+
 	private void Awake()
 	{
 		if (StorageInstance == null)
