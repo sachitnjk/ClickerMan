@@ -113,14 +113,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 466dfe57eccb7d0489b81b802f080a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickDelay: 0
+  clickDelay: 0.5
   maxClickCounterAmount: 80
   clickIncreaseAmount: 2
   overheatSliderIncreaseAmount: 2
   maxOverheatSliderAmount: 10
   overheatDecreaseTimeDelay: 2
   overheatSliderDecreaseOverTimeAmount: 1
-  coolingSliderDecrease_OverheatIncreaseAmount: 1
+  coolingSliderDecrease_OverheatIncreaseAmount: 0.2
 --- !u!1 &4456996823380372932
 GameObject:
   m_ObjectHideFlags: 0
