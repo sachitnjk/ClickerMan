@@ -35,7 +35,7 @@ public class CoolingController : SwitchCommonBehaviour
 
 	protected virtual void CoolingSliderIncrease()
 	{
-		if(coolingSlider.value != maxCoolingSliderAmount && base.GetCanInteractStatus())
+		if(coolingSlider.value != maxCoolingSliderAmount)
 		{
 			coolingSlider.value += coolingSliderIncreaseAmount;
 			CoolingImpactOnOverheat();
@@ -49,7 +49,6 @@ public class CoolingController : SwitchCommonBehaviour
 
 	IEnumerator CoolingSliderDecreaseOvertime()
 	{
-		base.SetCanInteractStatus(false);
 		coolingSliderDecreasing = true;
 
 		yield return new WaitForSeconds(coolingDecreaseTimeDelay);
@@ -62,7 +61,6 @@ public class CoolingController : SwitchCommonBehaviour
 		}
 
 		coolingSliderDecreasing = false;
-		base.SetCanInteractStatus(true);
 	}
 
 	protected virtual void CoolingImpactOnOverheat()

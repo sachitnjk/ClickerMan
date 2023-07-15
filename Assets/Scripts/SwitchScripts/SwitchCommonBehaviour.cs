@@ -10,26 +10,19 @@ public class SwitchCommonBehaviour : MonoBehaviour
 	private TextMeshProUGUI scoreTextBox;
 
 	[Header("Clicker Attributes")]
-	[SerializeField] private float clickDelay;
-	[SerializeField] private float maxClickCounterAmount;
 	[SerializeField] private float clickIncreaseAmount;
 
-	private float currentDelay = 0f;
 	private float currentClickCounterAmount;
 	private float existingCounterAmount;
 
 	private bool isClicked = false;
-	private bool canInteract;
 
 	protected virtual void Start()
 	{
 		playerInputControls = GetComponent<PlayerInputControls>();
 		scoreTextBox = Storage.StorageInstance.GetScoreTextBox();
 
-		currentClickCounterAmount = Mathf.Clamp(currentClickCounterAmount, 0f, maxClickCounterAmount);
 		currentClickCounterAmount = 0;
-
-		canInteract = true;
 	}
 
 	private void Update()
@@ -39,18 +32,12 @@ public class SwitchCommonBehaviour : MonoBehaviour
 
 	private void InteractCheck()
 	{
-		if (currentDelay > 0f)
-		{
-			currentDelay -= Time.deltaTime;
-		}
-
-		if (currentDelay <= 0f && playerInputControls.leftClick.WasPressedThisFrame() && canInteract)
+		if ( playerInputControls.leftClick.WasPressedThisFrame())
 		{
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
 			if (Physics.Raycast(ray, out RaycastHit hitInfo) && hitInfo.collider == GetComponent<Collider>())
 			{
-				currentDelay = clickDelay;
 				isClicked = true;
 				ClickCounterIncrease();
 			}
@@ -65,28 +52,7 @@ public class SwitchCommonBehaviour : MonoBehaviour
 	{
 		float.TryParse(scoreTextBox.text, out existingCounterAmount);
 		currentClickCounterAmount = existingCounterAmount + clickIncreaseAmount;
-		
-		currentClickCounterAmount = Mathf.Clamp(currentClickCounterAmount, 0f, maxClickCounterAmount);
 
 		scoreTextBox.text = currentClickCounterAmount.ToString();
-
-		if (currentClickCounterAmount >= maxClickCounterAmount)
-		{
-			canInteract = false;
-		}
-		else if( currentClickCounterAmount < maxClickCounterAmount)
-		{
-			canInteract = true;
-		}
-	}
-
-	protected virtual bool GetCanInteractStatus()
-	{
-		return canInteract;
-	}
-
-	protected virtual void SetCanInteractStatus(bool canInteractStatus)
-	{
-		canInteract = canInteractStatus;
 	}
 }
