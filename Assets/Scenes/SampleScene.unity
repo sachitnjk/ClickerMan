@@ -265,6 +265,8 @@ MonoBehaviour:
   scoreTextBox: {fileID: 1640837573}
   overheatSlider: {fileID: 2103791190}
   coolingSlider: {fileID: 994621296}
+  coolingController: {fileID: 0}
+  overheatController: {fileID: 0}
 --- !u!1 &632023357
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,14 +408,6 @@ PrefabInstance:
     - target: {fileID: 6982059117578982805, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
       propertyPath: clickIncreaseAmount
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7445788520035934973, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
-      propertyPath: overheatSliderIncreaseAmount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7445788520035934973, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
-      propertyPath: coolingSliderDecrease_OverheatIncreaseAmount
-      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4343333252090767071, guid: 00f017ebd2421b446ba1109da0fccb86, type: 3}
@@ -1124,10 +1118,6 @@ PrefabInstance:
     - target: {fileID: 1394985617708800947, guid: 776b60d7e609ee84a80123f924774b04, type: 3}
       propertyPath: overheatDecrease_CoolingIncreaseAmount
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1394985617708800947, guid: 776b60d7e609ee84a80123f924774b04, type: 3}
-      propertyPath: overheatSliderDecrease_CoolingIncreaseAmount
-      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3749369492160541516, guid: 776b60d7e609ee84a80123f924774b04, type: 3}
       propertyPath: clickIncreaseAmount

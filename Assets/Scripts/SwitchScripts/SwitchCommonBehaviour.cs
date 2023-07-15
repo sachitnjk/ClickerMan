@@ -10,7 +10,9 @@ public class SwitchCommonBehaviour : MonoBehaviour
 	private TextMeshProUGUI scoreTextBox;
 
 	[Header("Clicker Attributes")]
-	[SerializeField] private float clickIncreaseAmount;
+	[SerializeField] private float increaseAmount;
+	private float increaseAmountWhileDecrease;
+	private float clickIncreaseAmount;
 
 	private float currentClickCounterAmount;
 	private float existingCounterAmount;
@@ -21,6 +23,9 @@ public class SwitchCommonBehaviour : MonoBehaviour
 	{
 		playerInputControls = GetComponent<PlayerInputControls>();
 		scoreTextBox = Storage.StorageInstance.GetScoreTextBox();
+
+		increaseAmountWhileDecrease = increaseAmount / 2;
+		clickIncreaseAmount = increaseAmount;
 
 		currentClickCounterAmount = 0;
 	}
@@ -54,5 +59,14 @@ public class SwitchCommonBehaviour : MonoBehaviour
 		currentClickCounterAmount = existingCounterAmount + clickIncreaseAmount;
 
 		scoreTextBox.text = currentClickCounterAmount.ToString();
+	}
+
+	protected virtual void ClickAmount_SliderDecrease()
+	{
+		clickIncreaseAmount = increaseAmountWhileDecrease;
+	}
+	protected virtual void ClickAmount_Normal() 
+	{
+		clickIncreaseAmount = increaseAmount;
 	}
 }

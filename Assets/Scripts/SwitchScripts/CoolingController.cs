@@ -45,6 +45,14 @@ public class CoolingController : SwitchCommonBehaviour
 				StartCoroutine(CoolingSliderDecreaseOvertime());
 			}
 		}
+		if (coolingSliderDecreasing)
+		{
+			base.ClickAmount_SliderDecrease();
+		}
+		else
+		{
+			base.ClickAmount_Normal();
+		}
 	}
 
 	IEnumerator CoolingSliderDecreaseOvertime()
@@ -69,21 +77,5 @@ public class CoolingController : SwitchCommonBehaviour
 		{
 			overheatSlider.value -= overheatSliderDecrease_CoolingIncreaseAmount;
 		}
-	}
-	public void SetCoolingSliderAmountIncrease(float increaseAmount)
-	{
-		coolingSliderIncreaseAmount = increaseAmount;
-	}
-	public void SetMaxCoolingValue(float maxValue)
-	{
-		maxCoolingSliderAmount = maxValue;
-	}
-	public void SetCoolingSliderDecreaseAmount(float decreaseAmount)
-	{
-		coolingSliderDecreaseOverTimeAmount = decreaseAmount;
-	}
-	public void SetOverheatAffectAmount(float affectAmount)
-	{
-		overheatSliderDecrease_CoolingIncreaseAmount = affectAmount;
 	}
 }

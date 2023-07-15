@@ -113,10 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 466dfe57eccb7d0489b81b802f080a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickDelay: 0.5
-  maxClickCounterAmount: 80
-  clickIncreaseAmount: 2
-  overheatSliderIncreaseAmount: 2
+  increaseAmount: 2
+  overheatSliderIncreaseAmount: 1
   maxOverheatSliderAmount: 10
   overheatDecreaseTimeDelay: 2
   overheatSliderDecreaseOverTimeAmount: 1
