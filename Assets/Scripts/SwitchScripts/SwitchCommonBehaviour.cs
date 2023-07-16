@@ -76,8 +76,8 @@ public class SwitchCommonBehaviour : MonoBehaviour
 		{
 			Vector3 spawnPosition = hitInfo.point;
 
-			var floatingTextObject = Instantiate(floatingText, spawnPosition, Quaternion.identity, transform);
-			floatingTextObject.GetComponent<TextMesh>().text = clickIncreaseAmount.ToString();
+			var floatingTextObject = Instantiate(floatingText, spawnPosition, floatingText.transform.rotation);
+			floatingTextObject.GetComponentInChildren<TextMesh>().text = clickIncreaseAmount.ToString();
 		}
 	}
 

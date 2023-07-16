@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 466dfe57eccb7d0489b81b802f080a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatingText: {fileID: 3363458104891524748, guid: c80f5fc800a2ee34ab33ea2b3e871fc4, type: 3}
+  floatingText: {fileID: 2505835370374656778, guid: 52f142210fdc4c145908e1297cac2485, type: 3}
   increaseAmount: 2
   overheatSliderIncreaseAmount: 1
   maxOverheatSliderAmount: 10
