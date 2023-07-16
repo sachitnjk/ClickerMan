@@ -21,6 +21,8 @@ public class SwitchCommonBehaviour : MonoBehaviour
 
 	private bool isClicked = false;
 
+	RaycastHit hitInfo;
+
 	protected virtual void Start()
 	{
 		playerInputControls = GetComponent<PlayerInputControls>();
@@ -43,7 +45,7 @@ public class SwitchCommonBehaviour : MonoBehaviour
 		{
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-			if (Physics.Raycast(ray, out RaycastHit hitInfo) && hitInfo.collider == GetComponent<Collider>())
+			if (Physics.Raycast(ray, out hitInfo) && hitInfo.collider == GetComponent<Collider>())
 			{
 				isClicked = true;
 				ClickCounterIncrease();
@@ -69,8 +71,14 @@ public class SwitchCommonBehaviour : MonoBehaviour
 
 	private void ShowFloatingText()
 	{
-		var floatingTextObject = Instantiate(floatingText, transform.position, Quaternion.identity, transform);
-		floatingTextObject.GetComponent<TextMesh>().text = clickIncreaseAmount.ToString();
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		if (Physics.Raycast(ray, out hitInfo))
+		{
+			Vector3 spawnPosition = hitInfo.point;
+
+			var floatingTextObject = Instantiate(floatingText, spawnPosition, Quaternion.identity, transform);
+			floatingTextObject.GetComponent<TextMesh>().text = clickIncreaseAmount.ToString();
+		}
 	}
 
 	protected virtual void ClickAmount_SliderDecrease()
