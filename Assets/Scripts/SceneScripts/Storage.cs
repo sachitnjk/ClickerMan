@@ -18,6 +18,7 @@ public class Storage : MonoBehaviour
 	[SerializeField] private OverheatController overheatController;
 
 	private float currentScore;
+	private float updatedScore;
 
 	private void Awake()
 	{
@@ -35,6 +36,12 @@ public class Storage : MonoBehaviour
 	{
 		float.TryParse(scoreTextBox.text, out currentScore);
 		return currentScore;
+	}
+	public void SetCurrentScore(float UpgradeCost)
+	{
+		float.TryParse(scoreTextBox.text, out currentScore);
+		updatedScore = currentScore - UpgradeCost;
+		scoreTextBox.text = updatedScore.ToString();
 	}
 
 	public Slider GetOverheatSlider()
