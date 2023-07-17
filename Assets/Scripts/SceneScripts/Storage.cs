@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +17,8 @@ public class Storage : MonoBehaviour
 	[SerializeField] private CoolingController coolingController;
 	[SerializeField] private OverheatController overheatController;
 
+	private float currentScore;
+
 	private void Awake()
 	{
 		if (StorageInstance == null)
@@ -26,6 +29,12 @@ public class Storage : MonoBehaviour
 		{
 			Destroy(this);
 		}
+	}
+
+	public float GetCurrentScore()
+	{
+		float.TryParse(scoreTextBox.text, out currentScore);
+		return currentScore;
 	}
 
 	public Slider GetOverheatSlider()

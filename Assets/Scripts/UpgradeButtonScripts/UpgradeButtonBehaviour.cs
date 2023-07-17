@@ -9,6 +9,8 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 
 	private bool isInteractable = true;
 
+	[SerializeField] private float targetScore;
+
 	private void Start()
 	{
 		playerInputControls = GetComponent<PlayerInputControls>();
@@ -22,12 +24,22 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 
 	private void UpgradeInteractCheck()
 	{
-		if(playerInputControls.leftClick.WasPressedThisFrame() && isInteractable) 
+		if (Storage.StorageInstance.GetCurrentScore() >= targetScore)
+		{
+			isInteractable = true;
+		}
+		else
+		{
+			isInteractable = false;
+		}
+
+		if (playerInputControls.leftClick.WasPressedThisFrame() && isInteractable) 
 		{
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
 			if (Physics.Raycast(ray, out RaycastHit hitInfo) && hitInfo.collider == GetComponent<Collider>())
 			{
+				targetScore *= 2;
 				upgradeButtonAnimator.SetBool("PlayUpgradeButtonDown", true);
 			}
 		}
