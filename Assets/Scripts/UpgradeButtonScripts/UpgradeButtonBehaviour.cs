@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UpgradeButtonBehaviour : MonoBehaviour
@@ -10,6 +11,7 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 	private bool isInteractable = true;
 
 	[SerializeField] private float targetScore;
+	[SerializeField] private TextMeshProUGUI requiredScore;
 
 	private void Start()
 	{
@@ -20,6 +22,7 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 	private void Update()
 	{
 		UpgradeInteractCheck();
+		requiredScore.text = targetScore.ToString();
 	}
 
 	private void UpgradeInteractCheck()
