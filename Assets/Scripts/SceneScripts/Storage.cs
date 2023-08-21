@@ -14,9 +14,6 @@ public class Storage : MonoBehaviour
 	[SerializeField] private Slider overheatSlider;
 	[SerializeField] private Slider coolingSlider;
 
-	[SerializeField] private CoolingController coolingController;
-	[SerializeField] private OverheatController overheatController;
-
 	private float currentScore;
 	private float updatedScore;
 
