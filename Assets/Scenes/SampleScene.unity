@@ -167,6 +167,10 @@ PrefabInstance:
       propertyPath: targetScore
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 2063679914144160187, guid: 1858ab7997c52a84ca2fcea0a60eea7b, type: 3}
+      propertyPath: upgradeForThisButton
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8151331587723630010, guid: 1858ab7997c52a84ca2fcea0a60eea7b, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 38
@@ -257,7 +261,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 831263487}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -308,8 +313,6 @@ MonoBehaviour:
   scoreTextBox: {fileID: 1640837573}
   overheatSlider: {fileID: 2103791190}
   coolingSlider: {fileID: 994621296}
-  coolingController: {fileID: 0}
-  overheatController: {fileID: 0}
 --- !u!1 &632023357
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,6 +632,72 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &831263486
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 437853052}
+    m_Modifications:
+    - target: {fileID: 4702094995380039883, guid: b734579caf85e9c4a98901528b5e8042, type: 3}
+      propertyPath: scoreIncreaseRate
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783609010744682083, guid: b734579caf85e9c4a98901528b5e8042, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783609010744682083, guid: b734579caf85e9c4a98901528b5e8042, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.692
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783609010744682083, guid: b734579caf85e9c4a98901528b5e8042, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783609010744682083, guid: b734579caf85e9c4a98901528b5e8042, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.583
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783609010744682083, guid: b734579caf85e9c4a98901528b5e8042, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783609010744682083, guid: b734579caf85e9c4a98901528b5e8042, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783609010744682083, guid: b734579caf85e9c4a98901528b5e8042, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783609010744682083, guid: b734579caf85e9c4a98901528b5e8042, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783609010744682083, guid: b734579caf85e9c4a98901528b5e8042, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783609010744682083, guid: b734579caf85e9c4a98901528b5e8042, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783609010744682083, guid: b734579caf85e9c4a98901528b5e8042, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783609010744682087, guid: b734579caf85e9c4a98901528b5e8042, type: 3}
+      propertyPath: m_Name
+      value: MechArm
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b734579caf85e9c4a98901528b5e8042, type: 3}
+--- !u!4 &831263487 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6783609010744682083, guid: b734579caf85e9c4a98901528b5e8042, type: 3}
+  m_PrefabInstance: {fileID: 831263486}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &907819865
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,6 +834,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1607606602}
     m_Modifications:
+    - target: {fileID: 2063679914144160187, guid: 1858ab7997c52a84ca2fcea0a60eea7b, type: 3}
+      propertyPath: upgrades.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8487151297160494766, guid: 1858ab7997c52a84ca2fcea0a60eea7b, type: 3}
       propertyPath: m_Name
       value: UpgradeButtonParent

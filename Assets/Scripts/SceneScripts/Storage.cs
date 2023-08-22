@@ -17,6 +17,9 @@ public class Storage : MonoBehaviour
 	private float currentScore;
 	private float updatedScore;
 
+	public float mechArmGeneratedScore { get; set; }
+	public float scoreIncreaseRate { get; set; }
+
 	private void Awake()
 	{
 		if (StorageInstance == null)
@@ -28,7 +31,6 @@ public class Storage : MonoBehaviour
 			Destroy(this);
 		}
 	}
-
 	public float GetCurrentScore()
 	{
 		float.TryParse(scoreTextBox.text, out currentScore);
