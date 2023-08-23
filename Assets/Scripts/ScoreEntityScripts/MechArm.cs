@@ -17,8 +17,6 @@ public class MechArm : MonoBehaviour
 	private void Start()
 	{
 		scoreTextBox = Storage.StorageInstance.GetScoreTextBox();
-		Storage.StorageInstance.mechArmGeneratedScore = generatedScoreAmount;
-		Storage.StorageInstance.scoreIncreaseRate = scoreIncreaseRate;
 	}
 	private void Update()
 	{

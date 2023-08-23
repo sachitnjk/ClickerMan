@@ -30,6 +30,10 @@ public class Storage : MonoBehaviour
 		{
 			Destroy(this);
 		}
+
+		//Setting initial values at begining of game
+		mechArmGeneratedScore = 1;
+		scoreIncreaseRate = 1;
 	}
 	public float GetCurrentScore()
 	{
