@@ -7,15 +7,14 @@ public class ObjectPool : MonoBehaviour
 	public static ObjectPool Instance { get; private set; }
 
 	[System.Serializable]
-	private class TurretData
+	private class MechArmData
 	{
 		public Vector3 position;
 	}
 
-	[SerializeField] private GameObject mechTurretPrefab;
+	[SerializeField] private GameObject mechArmPrefab;
 	[SerializeField] private int poolSize;
-	[SerializeField] private List<TurretData> turretDataList = new List<TurretData>();
-	private int currentTurretIndex = 0;
+	[SerializeField] private List<MechArmData> mechArmDataList = new List<MechArmData>();
 
 	private List<GameObject> mechTurrets = new List<GameObject>();
 
@@ -32,15 +31,15 @@ public class ObjectPool : MonoBehaviour
 			return;
 		}
 
-		foreach (TurretData turretData in turretDataList)
+		foreach (MechArmData turretData in mechArmDataList)
 		{
-			GameObject newTurret = Instantiate(mechTurretPrefab, turretData.position, Quaternion.identity);
+			GameObject newTurret = Instantiate(mechArmPrefab, turretData.position, Quaternion.identity);
 			newTurret.SetActive(false);
 			mechTurrets.Add(newTurret);
 		}
 	}
 
-	public void ActivateTurret()
+	public void ActivateMechArm()
 	{
 		GameObject inactiveTurret = mechTurrets.Find(turret => !turret.activeSelf);
 
@@ -50,7 +49,7 @@ public class ObjectPool : MonoBehaviour
 		}
 	}
 
-	public void DeactivateTurret(GameObject turret)
+	public void DeactivateMechArm(GameObject turret)
 	{
 		turret.SetActive(false);
 	}
