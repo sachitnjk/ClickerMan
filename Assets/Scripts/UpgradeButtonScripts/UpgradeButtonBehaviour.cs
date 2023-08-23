@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+//using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 
@@ -36,7 +36,7 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 
 	private void UpgradeInteractCheck()
 	{
-		if (Storage.StorageInstance.GetCurrentScore() >= targetScore)
+		if (Storage.StorageInstance.GetCurrentScore() >= targetScore && Storage.StorageInstance.scoreIncreaseRate >= 0.6f)
 		{
 			isInteractable = true;
 		}
@@ -52,7 +52,7 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 			if (Physics.Raycast(ray, out RaycastHit hitInfo) && hitInfo.collider == GetComponent<Collider>())
 			{
 				Storage.StorageInstance.SetCurrentScore(targetScore);
-				targetScore *= 2;
+				targetScore *= 3;
 				upgradeButtonAnimator.SetBool("PlayUpgradeButtonDown", true);
 
 				ApplyUpgradeFunctionality(upgradeForThisButton);
@@ -69,10 +69,10 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 		switch(selectedUpgrades) 
 		{
 			case Upgrades.IncreaseGeneratedScore:
-				Storage.StorageInstance.mechArmGeneratedScore += 1;
+				Storage.StorageInstance.mechArmGeneratedScore += 1f;
 				break;
 			case Upgrades.ReduceScoreIncreaseRate:
-				Storage.StorageInstance.scoreIncreaseRate -= 1;
+				Storage.StorageInstance.scoreIncreaseRate -= 0.3f;
 				break;
 			case Upgrades.InstantiteNewMechArm:
 				break;
