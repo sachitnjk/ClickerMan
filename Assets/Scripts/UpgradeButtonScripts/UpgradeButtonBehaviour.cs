@@ -9,7 +9,8 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 	private PlayerInputControls playerInputControls;
 	private Animator upgradeButtonAnimator;
 
-	private bool isInteractable = true;
+	public bool isInteractable = true;
+	private bool increaseRateUpgradeMaxed;
 
 	[SerializeField] private float targetScore;
 	[SerializeField] private TextMeshProUGUI requiredScore;
@@ -26,25 +27,19 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 	{
 		playerInputControls = GetComponent<PlayerInputControls>();
 		upgradeButtonAnimator = GetComponent<Animator>();
+
+		increaseRateUpgradeMaxed = false;
 	}
 
 	private void Update()
 	{
+		FlagChecks();
 		UpgradeInteractCheck();
 		requiredScore.text = targetScore.ToString();
 	}
 
 	private void UpgradeInteractCheck()
 	{
-		if (Storage.StorageInstance.GetCurrentScore() >= targetScore)
-		{
-			isInteractable = true;
-		}
-		else
-		{
-			isInteractable = false;
-		}
-
 		if (playerInputControls.leftClick.WasPressedThisFrame() && isInteractable) 
 		{
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -66,28 +61,46 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 
 	private void ApplyUpgradeFunctionality(Upgrades selectedUpgrades)
 	{
-		if(Storage.StorageInstance.scoreIncreaseRate >= 0.6f)
-		{
-			isInteractable = true;
-		}
-		else
-		{
-			isInteractable = false;
-		}
-
 		switch(selectedUpgrades) 
 		{
 			case Upgrades.IncreaseGeneratedScore:
 				Storage.StorageInstance.mechArmGeneratedScore += 1f;
 				break;
 			case Upgrades.ReduceScoreIncreaseRate:
-				Storage.StorageInstance.scoreIncreaseRate -= 0.3f;
+				if(Storage.StorageInstance.scoreIncreaseRate >= 0.6f)
+				{
+					Storage.StorageInstance.scoreIncreaseRate -= 0.3f;
+				}
 				break;
 			case Upgrades.InstantiteNewMechArm:
-				ObjectPool.Instance.ActivateTurret();
+				ObjectPool.Instance.ActivateMechArm();
 				break;
 			default: 
 				break;
+		}
+	}
+
+	private void FlagChecks()
+	{
+		if (Storage.StorageInstance.scoreIncreaseRate < 0.6f)
+		{
+			increaseRateUpgradeMaxed = true;
+		}
+
+		if (Storage.StorageInstance.GetCurrentScore() >= targetScore)
+		{
+			if (upgradeForThisButton == Upgrades.ReduceScoreIncreaseRate && increaseRateUpgradeMaxed)
+			{
+				isInteractable = false;
+			}
+			else
+			{
+				isInteractable = true;
+			}
+		}
+		else
+		{
+			isInteractable = false;
 		}
 	}
 }
