@@ -36,7 +36,7 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 
 	private void UpgradeInteractCheck()
 	{
-		if (Storage.StorageInstance.GetCurrentScore() >= targetScore && Storage.StorageInstance.scoreIncreaseRate >= 0.6f)
+		if (Storage.StorageInstance.GetCurrentScore() >= targetScore)
 		{
 			isInteractable = true;
 		}
@@ -66,6 +66,15 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 
 	private void ApplyUpgradeFunctionality(Upgrades selectedUpgrades)
 	{
+		if(Storage.StorageInstance.scoreIncreaseRate >= 0.6f)
+		{
+			isInteractable = true;
+		}
+		else
+		{
+			isInteractable = false;
+		}
+
 		switch(selectedUpgrades) 
 		{
 			case Upgrades.IncreaseGeneratedScore:
@@ -75,6 +84,7 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 				Storage.StorageInstance.scoreIncreaseRate -= 0.3f;
 				break;
 			case Upgrades.InstantiteNewMechArm:
+				ObjectPool.Instance.ActivateTurret();
 				break;
 			default: 
 				break;
