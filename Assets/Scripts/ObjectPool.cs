@@ -6,15 +6,10 @@ public class ObjectPool : MonoBehaviour
 {
 	public static ObjectPool Instance { get; private set; }
 
-	[System.Serializable]
-	private class MechArmData
-	{
-		public Vector3 position;
-	}
-
 	[SerializeField] private GameObject mechArmPrefab;
 	[SerializeField] private int poolSize;
-	[SerializeField] private List<MechArmData> mechArmDataList = new List<MechArmData>();
+	[SerializeField] private GameObject spawnArea;
+	[SerializeField] private float minDistanceBetweenEachArm;
 
 	private List<GameObject> mechTurrets = new List<GameObject>();
 
@@ -31,12 +26,54 @@ public class ObjectPool : MonoBehaviour
 			return;
 		}
 
-		foreach (MechArmData turretData in mechArmDataList)
+		Renderer spawnRenderer = spawnArea.GetComponent<Renderer>();
+		Vector3 spawnAreaMin = spawnRenderer.bounds.min;
+		Vector3 spawnAreaMax = spawnRenderer.bounds.max;
+
+		float cellSize = minDistanceBetweenEachArm * 2;
+
+		// Generate valid spawn positions using grid-based approach
+		List<Vector3> validSpawnPositions = GenerateValidSpawnPositions(spawnAreaMin, spawnAreaMax, cellSize);
+
+		// Spawn MechArm objects at valid positions
+		for (int i = 0; i < poolSize && i < validSpawnPositions.Count; i++)
 		{
-			GameObject newTurret = Instantiate(mechArmPrefab, turretData.position, Quaternion.identity);
+			Vector3 spawnPosition = validSpawnPositions[i];
+			GameObject newTurret = Instantiate(mechArmPrefab, spawnPosition, Quaternion.identity);
 			newTurret.SetActive(false);
 			mechTurrets.Add(newTurret);
 		}
+	}
+
+	private List<Vector3> GenerateValidSpawnPositions(Vector3 minBounds, Vector3 maxBounds, float cellSize)
+	{
+		List<Vector3> validPositions = new List<Vector3>();
+
+		for (float x = minBounds.x; x <= maxBounds.x; x += cellSize)
+		{
+			for (float z = minBounds.z; z <= maxBounds.z; z += cellSize)
+			{
+				Vector3 gridCellCenter = new Vector3(x + cellSize / 2, maxBounds.y, z + cellSize / 2);
+
+				if (IsValidSpawnPosition(gridCellCenter))
+				{
+					validPositions.Add(gridCellCenter);
+				}
+			}
+		}
+		return validPositions;
+	}
+
+	private bool IsValidSpawnPosition(Vector3 position)
+	{
+		foreach (GameObject turret in mechTurrets)
+		{
+			if (Vector3.Distance(position, turret.transform.position) < minDistanceBetweenEachArm)
+			{
+				return false;
+			}
+		}
+		return true;
 	}
 
 	public void ActivateMechArm()

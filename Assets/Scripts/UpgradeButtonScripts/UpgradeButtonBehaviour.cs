@@ -47,7 +47,7 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 			if (Physics.Raycast(ray, out RaycastHit hitInfo) && hitInfo.collider == GetComponent<Collider>())
 			{
 				Storage.StorageInstance.SetCurrentScore(targetScore);
-				targetScore *= 3;
+				targetScore *= 2f;
 				upgradeButtonAnimator.SetBool("PlayUpgradeButtonDown", true);
 
 				ApplyUpgradeFunctionality(upgradeForThisButton);
