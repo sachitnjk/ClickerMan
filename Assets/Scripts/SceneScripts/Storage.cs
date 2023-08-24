@@ -40,10 +40,11 @@ public class Storage : MonoBehaviour
 		float.TryParse(scoreTextBox.text, out currentScore);
 		return currentScore;
 	}
-	public void SetCurrentScore(float UpgradeCost)
+	public void SetCurrentScore(float UpgradeCost, bool upgradeMaxed)
 	{
 		float.TryParse(scoreTextBox.text, out currentScore);
 		updatedScore = currentScore - UpgradeCost;
+
 		scoreTextBox.text = updatedScore.ToString();
 	}
 

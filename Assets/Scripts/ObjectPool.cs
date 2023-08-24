@@ -11,7 +11,7 @@ public class ObjectPool : MonoBehaviour
 	[SerializeField] private GameObject spawnArea;
 	[SerializeField] private float minDistanceBetweenEachArm;
 
-	private List<GameObject> mechTurrets = new List<GameObject>();
+	private List<GameObject> mechArms = new List<GameObject>();
 
 	private void Awake()
 	{
@@ -41,7 +41,7 @@ public class ObjectPool : MonoBehaviour
 			Vector3 spawnPosition = validSpawnPositions[i];
 			GameObject newTurret = Instantiate(mechArmPrefab, spawnPosition, Quaternion.identity);
 			newTurret.SetActive(false);
-			mechTurrets.Add(newTurret);
+			mechArms.Add(newTurret);
 		}
 	}
 
@@ -66,9 +66,9 @@ public class ObjectPool : MonoBehaviour
 
 	private bool IsValidSpawnPosition(Vector3 position)
 	{
-		foreach (GameObject turret in mechTurrets)
+		foreach (GameObject mechArm in mechArms)
 		{
-			if (Vector3.Distance(position, turret.transform.position) < minDistanceBetweenEachArm)
+			if (Vector3.Distance(position, mechArm.transform.position) < minDistanceBetweenEachArm)
 			{
 				return false;
 			}
@@ -78,7 +78,7 @@ public class ObjectPool : MonoBehaviour
 
 	public void ActivateMechArm()
 	{
-		GameObject inactiveTurret = mechTurrets.Find(turret => !turret.activeSelf);
+		GameObject inactiveTurret = mechArms.Find(turret => !turret.activeSelf);
 
 		if (inactiveTurret != null)
 		{

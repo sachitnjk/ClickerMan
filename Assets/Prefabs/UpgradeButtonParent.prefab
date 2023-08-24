@@ -422,8 +422,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd5e5449daa0f354389bcfa7b9937a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInteractable: 1
   targetScore: 10
+  inactiveMat: {fileID: 2100000, guid: 6a76bdb601f4a22469f87cc798255d4c, type: 2}
+  activeMat: {fileID: 2100000, guid: dbb428845c9c2cd4d8cdbb76023d63c8, type: 2}
   requiredScore: {fileID: 3884543247019767106}
+  upgradeForThisButton: 0
 --- !u!1 &8487151297160494766
 GameObject:
   m_ObjectHideFlags: 0

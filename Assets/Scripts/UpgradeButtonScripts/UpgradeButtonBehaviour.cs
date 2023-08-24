@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 //using System.Diagnostics;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UpgradeButtonBehaviour : MonoBehaviour
 {
 	private PlayerInputControls playerInputControls;
+	private MeshRenderer buttonMeshRenderer;
 	private Animator upgradeButtonAnimator;
 
 	public bool isInteractable = true;
 	private bool increaseRateUpgradeMaxed;
 
 	[SerializeField] private float targetScore;
+	[SerializeField] private Material inactiveMat;
+	[SerializeField] private Material activeMat;
 	[SerializeField] private TextMeshProUGUI requiredScore;
 	[SerializeField] private Upgrades upgradeForThisButton;
 
@@ -27,6 +31,7 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 	{
 		playerInputControls = GetComponent<PlayerInputControls>();
 		upgradeButtonAnimator = GetComponent<Animator>();
+		buttonMeshRenderer = GetComponent<MeshRenderer>();
 
 		increaseRateUpgradeMaxed = false;
 	}
@@ -35,7 +40,14 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 	{
 		FlagChecks();
 		UpgradeInteractCheck();
-		requiredScore.text = targetScore.ToString();
+		if(upgradeForThisButton == Upgrades.ReduceScoreIncreaseRate && increaseRateUpgradeMaxed)
+		{
+			requiredScore.text = "Upgrade Maxed";
+		}
+		else
+		{
+			requiredScore.text = targetScore.ToString();
+		}
 	}
 
 	private void UpgradeInteractCheck()
@@ -46,7 +58,7 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 
 			if (Physics.Raycast(ray, out RaycastHit hitInfo) && hitInfo.collider == GetComponent<Collider>())
 			{
-				Storage.StorageInstance.SetCurrentScore(targetScore);
+				Storage.StorageInstance.SetCurrentScore(targetScore, increaseRateUpgradeMaxed);
 				targetScore *= 2f;
 				upgradeButtonAnimator.SetBool("PlayUpgradeButtonDown", true);
 
@@ -102,5 +114,15 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 		{
 			isInteractable = false;
 		}
+
+		if(isInteractable) 
+		{
+			buttonMeshRenderer.material = activeMat;
+		}
+		else
+		{
+			buttonMeshRenderer.material = inactiveMat;
+		}
 	}
+
 }
