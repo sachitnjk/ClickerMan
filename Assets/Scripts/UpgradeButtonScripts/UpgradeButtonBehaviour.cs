@@ -20,6 +20,7 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 	[SerializeField] private Material inactiveMat;
 	[SerializeField] private Material activeMat;
 	[SerializeField] private TextMeshProUGUI requiredScore;
+	[SerializeField] private TextMeshProUGUI upgradeTypeText;
 	[SerializeField] private Upgrades upgradeForThisButton;
 
 	public enum Upgrades
@@ -36,6 +37,8 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 		buttonMeshRenderer = GetComponent<MeshRenderer>();
 
 		increaseRateUpgradeMaxed = false;
+
+		UpgradeTextSetter();
 	}
 
 	private void Update()
@@ -133,4 +136,19 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 		}
 	}
 
+	private void UpgradeTextSetter()
+	{
+		if(upgradeForThisButton == Upgrades.IncreaseGeneratedScore) 
+		{
+			upgradeTypeText.text = "Generated Score +";
+		}
+		else if (upgradeForThisButton == Upgrades.ReduceScoreIncreaseRate)
+		{
+			upgradeTypeText.text = "Score Incease rate +";
+		}
+		else
+		{
+			upgradeTypeText.text = "Mech Arm +";
+		}
+	}
 }
