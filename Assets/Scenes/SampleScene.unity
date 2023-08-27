@@ -168,6 +168,10 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2063679914144160187, guid: 1858ab7997c52a84ca2fcea0a60eea7b, type: 3}
+      propertyPath: mechUpgrade2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2063679914144160187, guid: 1858ab7997c52a84ca2fcea0a60eea7b, type: 3}
       propertyPath: upgradeForThisButton
       value: 1
       objectReference: {fileID: 0}
@@ -645,7 +649,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 6.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -886,6 +890,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1607606602}
     m_Modifications:
+    - target: {fileID: 2063679914144160187, guid: 1858ab7997c52a84ca2fcea0a60eea7b, type: 3}
+      propertyPath: mechUpgrade1
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2063679914144160187, guid: 1858ab7997c52a84ca2fcea0a60eea7b, type: 3}
       propertyPath: upgrades.Array.size
       value: 1

@@ -13,6 +13,8 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 
 	public bool isInteractable = true;
 	private bool increaseRateUpgradeMaxed;
+	public bool mechUpgrade1;
+	public bool mechUpgrade2;
 
 	[SerializeField] private float targetScore;
 	[SerializeField] private Material inactiveMat;
@@ -94,28 +96,34 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 
 	private void FlagChecks()
 	{
+		bool canInteract = true;
+
 		if (Storage.StorageInstance.scoreIncreaseRate < 0.6f)
 		{
 			increaseRateUpgradeMaxed = true;
 		}
 
-		if (Storage.StorageInstance.GetCurrentScore() >= targetScore)
+		if (Storage.StorageInstance.GetCurrentScore() < targetScore)
 		{
-			if (upgradeForThisButton == Upgrades.ReduceScoreIncreaseRate && increaseRateUpgradeMaxed)
-			{
-				isInteractable = false;
-			}
-			else
-			{
-				isInteractable = true;
-			}
-		}
-		else
-		{
-			isInteractable = false;
+			canInteract = false;
 		}
 
-		if(isInteractable) 
+		if (upgradeForThisButton == Upgrades.ReduceScoreIncreaseRate && increaseRateUpgradeMaxed)
+		{
+			canInteract = false;
+		}
+
+		if (mechUpgrade1 || mechUpgrade2)
+		{
+			if (ObjectPool.Instance.GetActiveMechArmCount() <= 0)
+			{
+				canInteract = false;
+			}
+		}
+
+		isInteractable = canInteract;
+
+		if (isInteractable)
 		{
 			buttonMeshRenderer.material = activeMat;
 		}

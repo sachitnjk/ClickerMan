@@ -45,6 +45,21 @@ public class ObjectPool : MonoBehaviour
 		}
 	}
 
+	public int GetActiveMechArmCount()
+	{
+		int activeMechArms = 0;
+
+		foreach (GameObject mechArm in mechArms)
+		{
+			if(mechArm.activeSelf) 
+			{
+				activeMechArms++;
+			}
+		}
+
+		return activeMechArms;
+	}
+
 	private List<Vector3> GenerateValidSpawnPositions(Vector3 minBounds, Vector3 maxBounds, float cellSize)
 	{
 		List<Vector3> validPositions = new List<Vector3>();
