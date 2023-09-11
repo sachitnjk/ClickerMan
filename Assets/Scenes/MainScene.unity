@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aae7532ae5e6ff408fc20632f8c526c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mechArmPrefab: {fileID: 6783609010744682087, guid: b734579caf85e9c4a98901528b5e8042, type: 3}
+  mechArmPrefab: {fileID: 8246759366832839347, guid: 6f304427335164f4a9ebdbb2e8d033df, type: 3}
   poolSize: 10
   spawnArea: {fileID: 828889037}
   minDistanceBetweenEachArm: 0.3
@@ -1596,6 +1596,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1217012013164981096, guid: 0d0444089706e494f9ee7f08a637b425, type: 3}
       propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4043303070271520929, guid: 0d0444089706e494f9ee7f08a637b425, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4043303070504354650, guid: 0d0444089706e494f9ee7f08a637b425, type: 3}

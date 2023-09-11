@@ -140,11 +140,11 @@ public class UpgradeButtonBehaviour : MonoBehaviour
 	{
 		if(upgradeForThisButton == Upgrades.IncreaseGeneratedScore) 
 		{
-			upgradeTypeText.text = "Generated Score +";
+			upgradeTypeText.text = "Mech Arm Generated Score +";
 		}
 		else if (upgradeForThisButton == Upgrades.ReduceScoreIncreaseRate)
 		{
-			upgradeTypeText.text = "Score Incease rate +";
+			upgradeTypeText.text = "Mech Arm Score Incease rate +";
 		}
 		else
 		{

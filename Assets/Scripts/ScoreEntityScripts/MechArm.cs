@@ -11,12 +11,18 @@ public class MechArm : MonoBehaviour
 
 	[SerializeField] private float generatedScoreAmount;
 	[SerializeField] private float scoreIncreaseRate;
+	[SerializeField] private float minAnimChangeTime;
+	[SerializeField] private float maxAnimChangeTime;
+
+	[SerializeField] Animator mechArmAnimator;
 
 	private TextMeshProUGUI scoreTextBox;
-
+	private float animChangeTime;
+	private float timeSinceLastAnimChange;
 	private void Start()
 	{
 		scoreTextBox = Storage.StorageInstance.GetScoreTextBox();
+		AnimChangeTimeCalc(minAnimChangeTime, maxAnimChangeTime);
 	}
 	private void Update()
 	{
@@ -24,6 +30,25 @@ public class MechArm : MonoBehaviour
 		scoreIncreaseRate = Storage.StorageInstance.scoreIncreaseRate;
 
 		GenerateScore();
+
+		timeSinceLastAnimChange += Time.deltaTime;
+		if(timeSinceLastAnimChange >= animChangeTime)
+		{
+			if (!mechArmAnimator.GetBool("isIdle"))
+			{
+				mechArmAnimator.SetBool("isIdle", true);
+			}
+			else
+			{
+				mechArmAnimator.SetBool("isIdle", false);
+			}
+			timeSinceLastAnimChange = 0f;
+		}
+	}
+
+	private void AnimChangeTimeCalc(float minAnimChangeTime, float maxAnimChangeTime)
+	{
+		animChangeTime = Random.Range(minAnimChangeTime, maxAnimChangeTime);
 	}
 
 	private void GenerateScore()
